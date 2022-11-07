@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="wrap">
+	<h1>FORM을 통해서 GET방식 테스트</h1>
+	<form action="../GetTest" method="get"> <!--  -->
+	<!-- action에 지정된 값이 서블릿의 url-pattern, 경로와 맞아야 한다.
+	
+		action에 "GetTest" 하면 톰캣/webapps/example/을 찾아간다.
+		action에 "/GetTest" 하면 톰캣/webapps/root를 찾아간다.
+		action에 "../GetTest" 하면 상대경로로 /example에서 하나 나가서 찾는다. **왠만하면 이걸 쓰자**
+		action에 "/MyWeb/GetTest 해야 /MyWeb을 찾아간다. = 절대경로로 지정하는 방식. "/컨텍스트명/파일경로"
+	 -->
+		이 름:<input type="text" name="name"><br><br>
+			<!-- "name속성에 지정한 값"을 서버 백엔드페이지에서 req.getParameter("파라미터명")으로 사용해서 중요함. -->
+			<!-- id랑 햇갈리면 안된다. 이건 프론트엔드에서  -->
+		아이디:<input type="text" name="userid" id="userid"><br><br>
+		<button type="submit">Submit</button>
+	</form>
+	<hr color="blue">
+	<h2>링크를 통해 서버에 전송하는 방식도 GET방식 테스트</h2>
+	<a href="../GetTest?name=Hong&userid=Gildong"> GetTest 서블릿 페이지로 이동</a>
+</div>
+
+</body>
+</html>

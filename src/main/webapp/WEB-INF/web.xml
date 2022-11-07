@@ -9,4 +9,14 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  <!-- 서블릿 등록 -->
+  <servlet>
+	  <servlet-name>HelloServlet</servlet-name>
+	  <servlet-class>my.com.HelloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>HelloServlet</servlet-name>
+	  <url-pattern>/aaa</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
