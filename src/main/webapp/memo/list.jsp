@@ -31,11 +31,13 @@
 	if(memoArr!=null){
 		for(MemoVO vo:memoArr){
 %>
+
 	<tr>
 		<td><%=vo.getIdx()%></td>
 		<td><%=vo.getMsg()%><span class="mdate">[<%=vo.getWdate()%>]</span></td>
 		<td><%=vo.getName()%></td>
-		<td><a>수정</a>|<a href="MemoDelete?idx=<%=vo.getIdx()%>">삭제</a></td>
+		<td><a href="MemoEditForm?idx=<%=vo.getIdx()%>">수정</a>|
+			<a href="MemoDelete?idx=<%=vo.getIdx()%>">삭제</a></td>
 	</tr>
 
 <%			

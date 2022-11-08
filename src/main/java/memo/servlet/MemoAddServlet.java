@@ -45,6 +45,7 @@ public class MemoAddServlet extends HttpServlet {
 			String str=(n>0)?"글등록 성공":"글 등록 실패";
 			String loc=(n>0)?"MemoList":"memo/input.html";
 			out.println(str);
+			//자바스크립트로 경고처리, 이동 
 			out.println("<script>");
 			out.println("alert('"+str+"')");
 			out.println("location.href='"+loc+"'");
