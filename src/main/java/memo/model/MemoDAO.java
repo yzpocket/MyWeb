@@ -11,6 +11,10 @@ public class MemoDAO {
 	PreparedStatement ps;
 	ResultSet rs;
 	
+	/** DAO 기본 생성자 */
+	public MemoDAO() {
+	}
+	
 	/** CLOSE 하는 메서드. */
 	public void close() {
 		try {

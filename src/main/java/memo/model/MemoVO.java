@@ -12,18 +12,20 @@ public class MemoVO {
 	
 	//기본생성자.
 	//Spring 등 Framework에서 기본생성자가 필요함
+
+	/** VO 기본 생성자 */
 	public MemoVO() {
 	}
 	
-	//오버로드
+	/** 생성자 오버로드 Source/Generate Constructor Using Fields 로 생성 가능. */
 	public MemoVO(int idx, String name, String msg, Date wdate) {
 		this.idx=idx;
 		this.name=name;
 		this.msg=msg;
 		this.wdate=wdate;
 	}
-	//setter,getter 
 
+	/** Setter/Getter Source/Generate Getters/Setters 로 생성 가능. */
 	public int getIdx() {
 		return idx;
 	}
