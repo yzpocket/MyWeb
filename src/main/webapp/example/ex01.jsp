@@ -17,3 +17,6 @@
 <%-- <%= %> : 출력식(expression) => out.println(변수)와 동일한것.
 --%>
 <h2 style="color:tomato"><%=str%></h2>
+
+<%-- forward action과 예제 연결되었습니다 --%>
+<h2>ex07페이지에서 넘어온 파라미터 page: <%=request.getParameter("page") %></h2>
