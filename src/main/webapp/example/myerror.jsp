@@ -7,7 +7,7 @@
 	response.setStatus(200); //200 OK 은 응답 성공.
 %>
 <div class="container err">
-	<h1> Server Error: <%=exception.getMessage() --%></h1>
+	<h1> Server Error: <%=exception.getMessage()%></h1>
 	<%
 		exception.printStackTrace(); //디버깅용 => 톰캣 콘솔에 출력함.
 	%>
