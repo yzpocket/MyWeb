@@ -11,6 +11,17 @@ public class MemoDAO {
 	PreparedStatement ps;
 	ResultSet rs;
 	
+	/** CLOSE 하는 메서드. */
+	public void close() {
+		try {
+			if(rs!=null)rs.close();
+			if(ps!=null)ps.close();
+			if(con!=null)con.close();
+		}catch(SQLException e) {
+			System.out.println("close() error: "+e);
+		}
+	}
+	
 	/** DB접근해서 인서트하는 메서드*/
 	public int insertMemo(MemoVO memo) throws SQLException{
 		try {
@@ -37,15 +48,6 @@ public class MemoDAO {
 		}
 	}//-----
 	
-	public void close() {
-		try {
-			if(rs!=null)rs.close();
-			if(ps!=null)ps.close();
-			if(con!=null)con.close();
-		}catch(SQLException e) {
-			
-		}
-	}
 	
 
 	
