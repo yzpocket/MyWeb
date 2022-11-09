@@ -1,5 +1,10 @@
 package user.model;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import common.util.DBUtilMulti;
 public class UserDAO {
@@ -48,4 +53,48 @@ public class UserDAO {
 			close();
 		}
 	}
+	
+	
+	
+	
+//--------------------------------------------------------------------------------------- 세트임
+	/** DB접근해서 셀렉트하는 메서드*/
+	public List<UserVO> listUser() throws SQLException{
+		try {	
+			con=DBUtilMulti.getCon();
+			StringBuilder buf=new StringBuilder("select*from member order by idx desc");
+			String sql=buf.toString();
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			List<UserVO> arr= makeList(rs);
+			return arr;
+			}finally {
+				close();
+			}
+	}
+	//위의 arr에 담길 makeList 만들어줘야함.
+	private List<UserVO> makeList(ResultSet rs) throws SQLException{
+		List<UserVO> arr=new ArrayList<>();
+		while(rs.next()) {
+			int idx=rs.getInt("idx");
+			String name=rs.getString("name");
+			String userid=rs.getString("userid");
+			String pwd=rs.getString("pwd");
+			String hp1=rs.getString("hp1");
+			String hp2=rs.getString("hp2");
+			String hp3=rs.getString("hp3");
+			String post=rs.getString("post");
+			String addr1=rs.getString("addr1");
+			String addr2=rs.getString("addr2");
+			java.sql.Date indate=rs.getDate("indate");
+			int mileage=rs.getInt("mileage");
+			int status=rs.getInt("status");//컬럼데이터들 다꺼내와서
+			//vo에 담아준다
+			UserVO vo= new UserVO(idx,name,userid,pwd,hp1,hp2,hp3,post,addr1,addr2,indate,mileage,status);
+			arr.add(vo);//ArrayList에 vo를 담는다
+		}
+		return arr;
+	}
+//--------------------------------------------------------------------------------------- 세트임
+
 }
