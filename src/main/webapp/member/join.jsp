@@ -2,10 +2,18 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="/top.jsp"/>
 <script type="text/javascript" src="../js/userCheck.js"></script>
-<!-- 자바스크립트를 모듈화해서 임포트 -->
+<!-- memberCheck() 유효성 검사 Javascript를 모듈화해서 임포트 -->
 <div class="container">
 	<h1>Signup</h1>
 	<form name="mf" action="joinEnd.jsp" method="post">
+		<!-- 날짜 유효성 체크용 	userCheck.js의 isDate()함수
+		날짜 : <input type="text" name="birth">
+		*날짜 형식에 맞게 입력하세요.[yyyy-mm-dd or yyyy/mm/dd] -->
+		
+		<!-- 이메일 유효성 체크용 	userCheck.js의 isEmail()함수
+		이메일 : <input type="text" name="email">
+		*이메일 형식에 맞게 입력하세요.[aaa@naver.com] 알파벳,숫자,-,_@naver.com 형식 -->
+		
 		<table border="1" style="width:90%;margin:auto;margin-top:2em">
 			<tr>
 				<td width="20%" class="m1"><b>이름</b></td>
@@ -17,9 +25,9 @@
 			<tr>
 				<td width="20%" class="m1"><b>아이디</b></td>
 				<td width="80%" class="m2">
-					<input type="text" name="userid" id="userid" placeholder="User ID">
-					<button type="button">아이디 중복 체크</button>
-					<br><span class='ck'>*아이디는 영문자, 숫자, _, !만 가능해요.</span>
+					<input type="text" name="userid" id="userid" readonly placeholder="User ID" onclick="open_idcheck()">
+					<button type="button" onclick="open_idcheck()">아이디 중복 체크</button>
+					<br><span class='ck'>*아이디는 영문자, 숫자, _, !만 포함 4~8자리 이내 가능해요.</span>
 				</td>
 			</tr>
 			<tr>
