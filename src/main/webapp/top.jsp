@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="user.model.*"%>
+    pageEncoding="UTF-8"%>
 <!-- top.jsp -->
 <%
 	//Context명을 동적으로 알아내자 "/MyWeb" ==> Context
@@ -7,10 +7,6 @@
 	//top.jsp, foot.jsp는 공통 모듈이므로 ==> 절대 경로를 잡아줘야 한다.
 	String myctx=request.getContextPath();
 	//System.out.println("myctx(절대경로기준): "+myctx);
-	
-	//세션에서 저장한 로그인 유저를 불러온다.
-	UserVO loginUser=(UserVO)session.getAttribute("loginUser");
-	boolean isLogin=(loginUser!=null)? true:false;
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,16 +31,8 @@
             <ul>
                 <li><a href="<%=myctx%>/index.jsp">Home</a></li>
                 <li><a href="<%=myctx%>/member/join.jsp">Signup</a></li>
-                <% if(!isLogin){ %>
                 <li><a href="<%=myctx%>/login/login.jsp">Signin</a></li>
-                <%}else{ %>
-                <li><a href="<%=myctx%>/login/logout.jsp">Logout</a></li>
-                <%} %>
-                <li><a href="<%=myctx%>/member/list.jsp">Users</a></li>
                 <li><a href="#">Board</a></li>
-                <% if(isLogin){ %>
-                <li style="background:navy; border-radius:5px;"><a href="#" style="color:white;"><%=loginUser.getUserid() %>님 로그인 중..</a></li>
-                <%} %>
             </ul>
         </nav>
         <div class="clear"></div> <!-- div float clear blank-->
