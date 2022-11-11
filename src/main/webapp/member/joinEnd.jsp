@@ -27,7 +27,7 @@
 <%
 	int n=userDao.insertUser(user);
 	String str=(n>0)?"회원가입 처리 완료":"회원가입 실패";
-	String loc=(n>0)?"list.jsp":"javascript:history.go(-1)";
+	String loc=(n>0)?"../login/login.jsp":"javascript:history.go(-1)";
 %>								<!-- history.go(-1) 는 한단계 이전으로 이동시키는것 -->
 <script>
 	alert('<%=str%>');

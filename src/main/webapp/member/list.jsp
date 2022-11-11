@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, user.model.*"%>
+    pageEncoding="UTF-8" import="java.util.*,user.model.*"  %>
+<!--  관리자 체크 모듈 include -->
+<%@ include file="/login/adminCheckModule.jsp" %> 
 <%-- <jsp:useBean id="user" class="user.model.UserVO" scope="page"/> --%>
 <jsp:useBean id="userDao" class="user.model.UserDAO" scope="session"/>
 
 <jsp:include page="/top.jsp"/>
 <div class="container">
-	<h1>회원 목록 페이지[Admin Page]</h1>
-	<%
-		List<UserVO> arr=userDao.listUser();
+	<h1>회원 목록 페이지 [Admin Page]</h1>
+	<% 
+		List<UserVO> arr=userDao.listUser();  
+	   
 	%>
 	<table border="1" style="width:90%;margin:1em auto;">
 		<tr>
@@ -18,29 +21,32 @@
 			<th class="m1">회원상태</th>
 			<th class="m1">수정|삭제</th>
 		</tr>
-		<!-- ------------------ -->
-		<%
+		<!--  ------------------------- -->
+		<% 
 			if(arr==null||arr.size()==0){
 				%>
-		<tr><td colspan="6">데이터가 없습니다</td></tr>
+		<tr><td colspan="6">데이터가 없습니다</td></tr>		
 				<%
 			}else{
-				for(UserVO vo:arr){
-			%>
-			<tr>
-				<td><%=vo.getIdx() %></td>
-				<td><%=vo.getName() %></td>
-				<td><%=vo.getUserid() %></td>
-				<td><%=vo.getAllHp() %></td>
-				<td class="state<%=vo.getStatus() %>">
-				<%=(vo.getStatus()==0)?"활동회원":(vo.getStatus()==-1)?"정지회원":"탈퇴회원" %>
-				</td>
-				<td><a>수정</a><a>삭제</a></td>
-			</tr>
-			<%	}//for---
-			}//else--------
+				for(UserVO vo:arr){		
+				%>
+				<tr>
+					<td><%=vo.getIdx()%></td>
+					<td><%=vo.getName()%></td>
+					<td><%=vo.getUserid()%></td>
+					<td><%=vo.getAllHp()%></td>
+					<td class="state<%=vo.getStatus()%>">
+					<%=(vo.getStatus()==9)?"관리자":(vo.getStatus()==0)?"활동회원":(vo.getStatus()==-1)?"정지회원":"탈퇴회원" %>
+					</td>
+					<td><a href="modify.jsp?idx=<%=vo.getIdx()%>">수정</a><a>삭제</a></td>
+				</tr>
+				<% 
+				}//for-----
+			}//else-------------
 		%>
-		<!-- ------------------ -->
+		<!--  ------------------------- -->
 	</table>
+
 </div>
+
 <jsp:include page="/foot.jsp"/>

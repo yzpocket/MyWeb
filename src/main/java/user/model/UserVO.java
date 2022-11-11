@@ -7,6 +7,7 @@ import java.sql.Date;
 
 public class UserVO {
 	//jsp에서는 property라고함 html의 input name을 일치시켜주면 편리하다 => useBean액션 사용시 자동으로 값을 전달 할 수 있다.
+	//property명과 html의 input name을 일치시켜주면 편리=>useBean액션 사용시 자동으로 값을 전달할 수 있다 
 	private int idx;
 	private String name;
 	private String userid;
@@ -17,20 +18,21 @@ public class UserVO {
 	private String post;
 	private String addr1;
 	private String addr2;
+	
 	private java.sql.Date indate;
 	private int mileage;
-	private int status;//회원 상태정보 (일반회원:0, 정지회원:-1, 탈퇴회원:-2)
+	private int status; //회원상태정보 (0:일반 ,-1:정지, -2:탈퇴)
+	private String statusStr;
 	
-	/** VO 기본 생성자 */
-	public UserVO() {
-		//super();
-		System.out.println("UserVO생성자()...");
-	}
+		/** VO 기본 생성자 */
 
+	public UserVO() {
+		
+	}
 	/** 생성자 오버로드 Source/Generate Constructor Using Fields 로 생성 가능. */
+
 	public UserVO(int idx, String name, String userid, String pwd, String hp1, String hp2, String hp3, String post,
-			String addr1, String addr2, Date indate, int mileage, int status) {
-		super();
+			String addr1, String addr2, Date indate, int mileage, int status, String statusStr) {
 		this.idx = idx;
 		this.name = name;
 		this.userid = userid;
@@ -44,10 +46,12 @@ public class UserVO {
 		this.indate = indate;
 		this.mileage = mileage;
 		this.status = status;
+		this.statusStr = statusStr;
 	}
 
-	
+
 	/** Setter/Getter Source/Generate Getters/Setters 로 생성 가능. */
+
 	public int getIdx() {
 		return idx;
 	}
@@ -152,12 +156,24 @@ public class UserVO {
 		this.status = status;
 	}
 	
+	public String getStatusStr() {
+		return statusStr;
+	}
+
+	public void setStatusStr(String statusStr) {
+		this.statusStr = statusStr;
+	}
+
 	//핸드폰 번호 합친거
+
 	public String getAllHp() {
 		return hp1+"-"+hp2+"-"+hp3;
 	}
+	
 	//[우편]주소 합친거
+
 	public String getAllAddr() {
 		return "["+post+"]"+addr1+" "+addr2;
 	}
+	
 }

@@ -6,4 +6,7 @@
 <script>
 	alert('<%=exception.getMessage()%>');
 	history.back();
+	<%
+		exception.printStackTrace();
+	%>
 </script>

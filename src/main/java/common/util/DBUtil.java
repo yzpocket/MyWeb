@@ -3,7 +3,7 @@ import java.sql.*;
 public class DBUtil {
 	
 	static String url="jdbc:oracle:thin:@localhost:49161:XE";
-	static String user="scott", pwd="tiger";
+	static String user="multi", pwd="tiger";
 
 	
 	static {
